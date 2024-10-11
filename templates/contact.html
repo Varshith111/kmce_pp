@@ -12,11 +12,24 @@
     <header class="bg-gray-900 text-white p-3">
         <nav class="container mx-auto flex items-center justify-between">
             <a class="text-2xl font-bold" href="#">Class Vault</a>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="text-gray-300 lg:hidden focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+
+            <!-- Desktop Menu -->
             <div class="hidden lg:flex space-x-4">
                 <a class="text-gray-300 hover:text-white transition" href="{{ url_for('index') }}">Home</a>
-
             </div>
         </nav>
+
+        <!-- Mobile Menu (hidden by default, toggled with JavaScript) -->
+        <div id="mobile-menu" class="hidden lg:hidden mt-2">
+            <a class="block text-gray-300 hover:text-white p-2" href="{{ url_for('index') }}">Home</a>
+        </div>
     </header>
 
     <!-- Main Content Section -->
@@ -61,16 +74,14 @@
             <h2 class="text-2xl font-bold text-gray-700 mb-4">Contact Information</h2>
         
             <!-- Email Button -->
-        <!-- Email Button -->
-        <p class="text-gray-600"><strong>Email:</strong></p>
-        <a href="mailto:rvarshith68@gmail.com" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded inline-flex items-center" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-4 h-4 mr-2" viewBox="0 0 16 16">
-                <path d="M0 4a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H2a2 2 0 01-2-2V4zm13.999-.75H2.001a.25.25 0 00-.243.202L8 7.941l6.243-4.49a.25.25 0 00-.243-.202zM1 5.383V12a1 1 0 001 1h12a1 1 0 001-1V5.383l-6.75 4.872a.5.5 0 01-.5 0L1 5.383z"/>
-            </svg>
-            Send us an Email
-        </a>
+            <p class="text-gray-600"><strong>Email:</strong></p>
+            <a href="mailto:rvarshith68@gmail.com" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded inline-flex items-center" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-4 h-4 mr-2" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H2a2 2 0 01-2-2V4zm13.999-.75H2.001a.25.25 0 00-.243.202L8 7.941l6.243-4.49a.25.25 0 00-.243-.202zM1 5.383V12a1 1 0 001 1h12a1 1 0 001-1V5.383l-6.75 4.872a.5.5 0 01-.5 0L1 5.383z"/>
+                </svg>
+                Send us an Email
+            </a>
 
-        
             <!-- WhatsApp Button -->
             <p class="text-gray-600 mt-4"><strong>WhatsApp:</strong></p>
             <a href="https://wa.me/+918790748119" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded inline-flex items-center" target="_blank">
@@ -80,13 +91,22 @@
                 Chat with us on WhatsApp
             </a>
         </div>
-        
     </main>
 
     <!-- Footer Section -->
     <footer class="bg-gray-900 text-white text-center py-4 mt-12">
         <p>&copy; 2024 Class Vault. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Toggle mobile menu visibility
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
 
 </body>
 </html>
