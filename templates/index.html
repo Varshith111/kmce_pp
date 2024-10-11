@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Vault - Your Academic Hub</title>
+    <meta name="description" content="Class Vault is your academic hub for B.Tech students, providing access to previous papers, notes, and contact information.">
+    <meta name="keywords" content="Class Vault, B.Tech, academic hub, previous papers, notes, contact">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Styles */
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #3b82f6;
+        }
+
+        .hero-btn:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+
+        .highlight:hover {
+            transform: scale(1.03);
+            background-color: #f9fafb;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .bg-custom-blue {
+            background-color: #1e3a8a; /* Dark blue for the navbar */
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Navbar Section -->
+    <header class="bg-custom-blue text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-wide">Class Vault</a>
+            <nav class="space-x-4">
+                <a href="{{ url_for('about') }}" class="nav-link px-4 py-2 rounded-lg text-white transition">About Us</a>
+                <a href="{{ url_for('contact') }}" class="nav-link px-4 py-2 rounded-lg text-white transition">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero text-gray-100 text-center flex flex-col items-center justify-center h-80 bg-blue-600 shadow-lg">
+        <h1 class="text-3xl md:text-5xl font-semibold mb-4">Welcome to Class Vault</h1>
+        <p class="text-lg mb-6">Your academic hub for B.Tech students</p>
+        <a href="#" class="hero-btn bg-blue-500 px-6 py-3 rounded-full text-lg font-medium text-white shadow-md transition-all">Get Started</a>
+    </section>
+
+    <!-- Highlights Section -->
+    <main class="container mx-auto py-16">
+        <h2 class="text-center text-3xl font-bold mb-8 text-gray-900">Features</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 text-center">
+                <i class="fas fa-file-alt text-4xl text-yellow-500 mb-4"></i> <!-- File icon -->
+                <h4 class="text-xl md:text-2xl font-bold">Quick Access to Papers</h4>
+                <p class="mt-2 text-gray-600">Find and download past papers with ease.</p>
+                <a href="{{ url_for('previous_papers') }}" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">View Papers</a>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 text-center">
+                <i class="fas fa-book text-4xl text-yellow-500 mb-4"></i> <!-- Book icon -->
+                <h4 class="text-xl md:text-2xl font-bold">Download Notes</h4>
+                <p class="mt-2 text-gray-600">Get comprehensive notes for your subjects.</p>
+                <!-- Subject Selection Form -->
+                <form action="{{ url_for('subject_page') }}" method="get" class="mt-4">
+                    <select name="subject_id" class="border border-gray-300 rounded-lg p-2">
+                        <option value="1">Mathematics</option>
+                        <option value="2">AP</option>
+                        <option value="3">English</option>
+                    </select>
+                    <button type="submit" class="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">Download Notes</button>
+                </form>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 text-center">
+                <i class="fas fa-envelope text-4xl text-yellow-500 mb-4"></i> <!-- Contact icon -->
+                <h4 class="text-xl md:text-2xl font-bold">Contact Us</h4>
+                <p class="mt-2 text-gray-600">Get in touch for any inquiries.</p>
+                <a href="{{ url_for('contact') }}" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">Contact Page</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">&copy; 2024 Class Vault. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- FontAwesome Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

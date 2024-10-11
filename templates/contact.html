@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Navbar Section -->
+    <header class="bg-gray-900 text-white p-3">
+        <nav class="container mx-auto flex items-center justify-between">
+            <a class="text-2xl font-bold" href="#">Class Vault</a>
+            <div class="hidden lg:flex space-x-4">
+                <a class="text-gray-300 hover:text-white transition" href="{{ url_for('index') }}">Home</a>
+
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="container mx-auto mt-8 px-4">
+        <h1 class="text-3xl font-bold text-gray-700 text-center">Contact Us</h1>
+        <p class="text-gray-600 mt-4 text-center">We would love to hear from you! Please fill out the form below.</p>
+
+        <!-- Success message if thank_you parameter is present -->
+        {% if request.args.get('thank_you') %}
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">Thank You!</h2>
+            <p class="text-gray-600">We will get back to you shortly!</p>
+        </div>
+        {% else %}
+        <div class="mt-8">
+            <form action="{{ url_for('send_email') }}" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" aria-label="Contact Form">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Name</label>
+                    <input type="text" id="name" name="name" required aria-required="true" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Your Name">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
+                    <input type="email" id="email" name="email" required aria-required="true" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Your Email">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="message">Message</label>
+                    <textarea id="message" name="message" required aria-required="true" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Your Message"></textarea>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+        </div>
+        {% endif %}
+
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">Contact Information</h2>
+        
+            <!-- Email Button -->
+        <!-- Email Button -->
+        <p class="text-gray-600"><strong>Email:</strong></p>
+        <a href="mailto:rvarshith68@gmail.com" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded inline-flex items-center" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-4 h-4 mr-2" viewBox="0 0 16 16">
+                <path d="M0 4a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H2a2 2 0 01-2-2V4zm13.999-.75H2.001a.25.25 0 00-.243.202L8 7.941l6.243-4.49a.25.25 0 00-.243-.202zM1 5.383V12a1 1 0 001 1h12a1 1 0 001-1V5.383l-6.75 4.872a.5.5 0 01-.5 0L1 5.383z"/>
+            </svg>
+            Send us an Email
+        </a>
+
+        
+            <!-- WhatsApp Button -->
+            <p class="text-gray-600 mt-4"><strong>WhatsApp:</strong></p>
+            <a href="https://wa.me/+918790748119" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded inline-flex items-center" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-4 h-4 mr-2" viewBox="0 0 16 16">
+                    <path d="M13.618 2.377A7.943 7.943 0 008.027.001 8.01 8.01 0 00.022 9.882l-.51 3.123a.49.49 0 00.593.565l3.002-.799a7.932 7.932 0 007.968-.002 8.001 8.001 0 003.873-7.065 7.945 7.945 0 00-2.33-5.327zM8.027 14.8a6.77 6.77 0 01-3.399-.906l-.24-.14-1.782.473.485-1.783-.156-.238a6.73 6.73 0 01-1.024-3.578 6.793 6.793 0 016.792-6.795 6.73 6.73 0 013.579 1.025c.981.682 1.742 1.64 2.228 2.773a6.786 6.786 0 01-6.483 9.164zm3.988-5.14c-.195-.098-1.156-.57-1.335-.637-.18-.066-.313-.098-.445.098-.131.197-.511.637-.627.769-.115.131-.23.148-.425.049a5.545 5.545 0 01-1.637-1.006 6.055 6.055 0 01-1.115-1.413c-.115-.197-.012-.303.087-.403l.262-.312c.066-.065.098-.115.148-.197a.38.38 0 00.033-.379c-.098-.098-.445-1.074-.61-1.46-.161-.383-.325-.33-.445-.336h-.38c-.13 0-.339.049-.516.23-.18.197-.68.662-.68 1.616s.697 1.872.794 2.003c.098.13 1.37 2.093 3.312 2.936.462.199.822.316 1.103.403.462.147.88.127 1.213.078.369-.055 1.156-.473 1.32-.93.164-.456.164-.847.115-.93a.376.376 0 00-.33-.164z"/>
+                </svg>
+                Chat with us on WhatsApp
+            </a>
+        </div>
+        
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-white text-center py-4 mt-12">
+        <p>&copy; 2024 Class Vault. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

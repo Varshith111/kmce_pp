@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ subject.name }} - Syllabus and Notes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Navbar Section -->
+    <header class="bg-gray-900 text-white p-3">
+        <nav class="container mx-auto flex items-center justify-between">
+            <a class="text-2xl font-bold" href="#">Class Vault</a>
+            <div class="hidden lg:flex space-x-4">
+                <a class="text-gray-300 hover:text-white transition" href="{{ url_for('index') }}">Home</a>
+                <a class="text-gray-300 hover:text-white transition" href="{{ url_for('contact') }}">Contact</a>
+        </nav>
+        <h1 class="text-center mt-4 text-3xl font-bold">{{ subject.name }}</h1>
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="container mx-auto mt-8 px-4">
+        <a href="{{ url_for('index') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition mb-4 inline-block">Back to Subjects</a>
+
+        <!-- Syllabus Section -->
+        <h2 class="text-2xl font-semibold text-gray-700">Syllabus</h2>
+        <ul class="mt-4">
+            {% for unit in subject.units %}
+            <li class="bg-white p-6 rounded-lg shadow-md mt-4">
+                <h5 class="text-xl font-bold text-gray-800">Unit {{ unit.unit }}</h5>
+                <p class="text-gray-600 mt-2">{{ unit.syllabus }}</p>
+                <h6 class="font-semibold mt-4">Notes:</h6>
+                <ul class="list-disc list-inside mt-2">
+                    {% for note in unit.notes %}
+                    <li>
+                        <a href="{{ note.file_path }}" class="text-blue-600 hover:underline" target="_blank">{{ note.name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Previous Questions Section -->
+        <h2 class="text-2xl font-semibold text-gray-700 mt-8">Previous Questions</h2>
+        <a href="{{ subject.previous_questions }}" target="_blank" class="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300 transition inline-block mt-4">Download Previous Questions</a>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-white text-center py-4 mt-12">
+        <p>&copy; 2024 Class Vault. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</body>
+</html>
